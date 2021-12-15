@@ -64,7 +64,7 @@ namespace AutoTests
             if (driver.FindElements(By.CssSelector(".product-buy__price.product-buy__price_active")).Any()) webPrices = driver.FindElements(By.CssSelector(".product-buy__prev"));
 
             int[] actualPrices = webPrices.Select(webPrice => Int32.Parse(Regex.Replace(webPrice.Text, @" \₽?", ""))).ToArray();
-            actualPrices.ToList().ForEach(price => Assert.IsTrue(price >= 30000 && price <= 50000));
+            actualPrices.ToList().ForEach(price => Assert.IsTrue(price >= 30000 && price <= 50000, "The price is not included in the specified range"));
 
         }
 
